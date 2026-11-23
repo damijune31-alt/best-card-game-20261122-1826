@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rune Clash — a duel card game</title>
+<meta name="viewport" content="width=1280">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ============ TITLE SCREEN ============ -->
+  <section id="title" class="screen">
+    <div class="title-badge">A DUEL CARD GAME &middot; YOU vs MORGATH</div>
+    <h1>RUNE<br>CLASH</h1>
+    <p class="tagline">Outdraw. Outplay. Outlast the Ash Herald.</p>
+    <div class="title-cards">
+      <div class="card mini fire">
+        <div class="cost">2</div>
+        <div class="rank">6</div>
+        <div class="suit">&#9829;</div>
+        <div class="cname">Ember Strike</div>
+        <div class="ctext">Deal 6 damage</div>
+      </div>
+      <div class="card mini frost">
+        <div class="cost">2</div>
+        <div class="rank">5</div>
+        <div class="suit">&#9670;</div>
+        <div class="cname">Frost Guard</div>
+        <div class="ctext">Gain 5 shield</div>
+      </div>
+      <div class="card mini thorn">
+        <div class="cost">3</div>
+        <div class="rank">6</div>
+        <div class="suit">&#9827;</div>
+        <div class="cname">Thorn Mend</div>
+        <div class="ctext">Restore 6 life</div>
+      </div>
+    </div>
+    <button id="startBtn">&#9876; ENTER THE DUEL</button>
+    <p class="hint">Click a card to play it &middot; Keys 1&ndash;5 play &middot; Space ends turn &middot; R restarts</p>
+    <p class="rules">Both duelists start at 30 life. Mana grows every turn. First to 0 life loses.</p>
+  </section>
+
+  <!-- ============ GAME TABLE ============ -->
+  <section id="game" class="screen hidden">
+    <header class="duelist opp">
+      <div class="avatar opp-av">&#9760;</div>
+      <div class="who">
+        <div class="dname">MORGATH &middot; ASH HERALD</div>
+        <div class="hpbar"><div id="oppHpFill" class="hpfill opp-fill"></div><span id="oppHpText" class="hptext">30 / 30</span></div>
+      </div>
+      <div class="side-stat"><span class="lbl">SHIELD</span><span id="oppShield" class="bignum">0</span></div>
+      <div class="side-stat"><span class="lbl">MANA</span><span id="oppMana" class="bignum mana">3</span></div>
+      <div id="turnBanner" class="turn-banner">YOUR TURN</div>
+    </header>
+
+    <div id="oppHand" class="hand opp-hand"></div>
+
+    <div id="table">
+      <div id="lastPlayed" class="played-slot"><span class="slot-label">LAST PLAYED</span></div>
+      <div id="log" class="log">The duel begins. Your move, Warden.</div>
+      <div id="scoreBox" class="score-box"><span class="lbl">DAMAGE DEALT</span><span id="score" class="bignum">0</span></div>
+    </div>
+
+    <div id="playerHand" class="hand player-hand"></div>
+
+    <footer class="duelist you">
+      <div class="avatar you-av">&#9876;</div>
+      <div class="who">
+        <div class="dname">YOU &middot; RUNE WARDEN</div>
+        <div class="hpbar"><div id="youHpFill" class="hpfill you-fill"></div><span id="youHpText" class="hptext">30 / 30</span></div>
+      </div>
+      <div class="side-stat"><span class="lbl">SHIELD</span><span id="youShield" class="bignum">0</span></div>
+      <div class="side-stat"><span class="lbl">MANA</span><span id="youMana" class="bignum mana">3</span></div>
+      <div class="side-stat"><span class="lbl">DECK</span><span id="deckCount" class="bignum">25</span></div>
+      <button id="endBtn">END TURN &#9654;</button>
+    </footer>
+  </section>
+
+  <!-- ============ WIN / LOSS OVERLAY ============ -->
+  <section id="endOverlay" class="screen hidden">
+    <div id="endTitle" class="end-title">VICTORY</div>
+    <div id="endSub" class="end-sub">Morgath falls. The runes are yours.</div>
+    <div id="endStats" class="end-stats"></div>
+    <button id="againBtn">DUEL AGAIN &#8635;</button>
+    <p class="hint">Press R to restart &middot; Esc for title</p>
+  </section>
+
+</div>
+<script src="game.js"></script>
+</body>
+</html>
