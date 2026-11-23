@@ -1,0 +1,178 @@
+/* RUNE CLASH — table layout for a 1280x480 screenshot frame. No network: system fonts only. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #07130c; }
+body {
+  font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+  color: #f7f0dc;
+  display: flex; justify-content: center;
+}
+#app {
+  width: 1280px; height: 480px; position: relative; overflow: hidden;
+  background: radial-gradient(ellipse at 50% 30%, #1d5c33 0%, #123d21 55%, #0a2413 100%);
+  border: 4px solid #c9a227;
+  border-radius: 10px;
+}
+.hidden { display: none !important; }
+.screen { width: 100%; height: 100%; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ---------- shared bits ---------- */
+.bignum { font-size: 30px; font-weight: 900; line-height: 1; }
+.bignum.mana { color: #6ec6ff; }
+.lbl { display: block; font-size: 11px; letter-spacing: 2px; color: #d8c98a; font-weight: 700; }
+.hint { font-size: 14px; color: #cfe3c8; margin-top: 10px; }
+.rules { font-size: 13px; color: #9db894; margin-top: 4px; }
+
+/* ---------- title screen ---------- */
+#title { text-align: center; padding-top: 10px; }
+.title-badge {
+  display: inline-block; background: #c9a227; color: #1a1200;
+  font-size: 15px; font-weight: 900; letter-spacing: 3px;
+  padding: 6px 18px; border-radius: 20px;
+}
+#title h1 {
+  font-size: 68px; line-height: 0.92; font-weight: 900; letter-spacing: 6px;
+  color: #ffd94d; text-shadow: 0 4px 0 #7a4d00, 0 8px 22px rgba(0,0,0,.7);
+  margin-top: 4px;
+}
+.tagline { font-size: 21px; font-weight: 700; color: #ffffff; margin-top: 6px; }
+.title-cards { display: flex; justify-content: center; gap: 22px; margin-top: 8px; }
+#startBtn {
+  margin-top: 10px; background: #ffd94d; color: #231600; border: 3px solid #fff3b0;
+  font-size: 22px; font-weight: 900; letter-spacing: 2px;
+  padding: 10px 30px; border-radius: 12px;
+  box-shadow: 0 6px 0 #7a4d00, 0 10px 18px rgba(0,0,0,.55);
+}
+#startBtn:active { transform: translateY(4px); box-shadow: 0 2px 0 #7a4d00; }
+
+/* ---------- cards ---------- */
+.card {
+  width: 106px; height: 146px; border-radius: 10px; position: relative;
+  background: linear-gradient(160deg, #fff8e0, #f0dfae);
+  border: 3px solid #8a6d1d; color: #1c1503;
+  box-shadow: 0 4px 10px rgba(0,0,0,.55); flex: none;
+}
+.card .cost {
+  position: absolute; top: 5px; right: 5px; width: 30px; height: 30px;
+  background: #1f6fd6; color: #fff; border: 2px solid #bfe0ff; border-radius: 50%;
+  font-size: 18px; font-weight: 900; line-height: 27px; text-align: center;
+}
+.card .rank {
+  position: absolute; top: 20px; left: 0; right: 0; text-align: center;
+  font-size: 44px; font-weight: 900; line-height: 1;
+}
+.card .suit { position: absolute; top: 68px; left: 0; right: 0; text-align: center; font-size: 26px; }
+.card .cname {
+  position: absolute; bottom: 22px; left: 0; right: 0; text-align: center;
+  font-size: 12px; font-weight: 900; letter-spacing: .5px;
+}
+.card .ctext {
+  position: absolute; bottom: 7px; left: 0; right: 0; text-align: center;
+  font-size: 11px; color: #5a4a1c;
+}
+.card.fire .rank, .card.fire .suit { color: #c62f1d; }
+.card.frost .rank, .card.frost .suit { color: #1668b8; }
+.card.thorn .rank, .card.thorn .suit { color: #2c7a2c; }
+.card.storm .rank, .card.storm .suit { color: #6a3fb0; }
+.card.mini { width: 104px; height: 148px; }
+.card.mini .rank { font-size: 46px; top: 24px; }
+.card.mini .suit { top: 74px; font-size: 26px; }
+
+.card.back {
+  background: repeating-linear-gradient(45deg, #7a1d12 0 12px, #a33222 12px 24px);
+  border-color: #ffd94d;
+}
+.card.back::after {
+  content: "?"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 44px; font-weight: 900; color: #ffd94d;
+}
+.card.playable { outline: 3px solid #ffd94d; outline-offset: 2px; }
+.card.playable:hover { transform: translateY(-10px); }
+.card.too-costly { opacity: .55; filter: grayscale(.5); }
+
+/* ---------- game table ---------- */
+#game { display: flex; flex-direction: column; padding: 4px 14px 6px; }
+.duelist {
+  display: flex; align-items: center; gap: 14px;
+  background: rgba(0,0,0,.38); border: 2px solid rgba(201,162,39,.7);
+  border-radius: 10px; padding: 4px 12px; height: 50px; flex: none;
+}
+.avatar {
+  width: 38px; height: 38px; border-radius: 50%; flex: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 900; border: 3px solid #ffd94d;
+}
+.opp-av { background: #7a1d12; }
+.you-av { background: #14532d; }
+.who { flex: 1; min-width: 0; }
+.dname { font-size: 17px; font-weight: 900; letter-spacing: 1.5px; }
+.hpbar {
+  position: relative; height: 20px; background: #2a0d08; border: 2px solid #ffd94d;
+  border-radius: 10px; overflow: hidden; margin-top: 3px;
+}
+.hpfill { height: 100%; transition: width .3s; }
+.opp-fill { background: linear-gradient(90deg, #ff7a5c, #e5381f); }
+.you-fill { background: linear-gradient(90deg, #5fd35f, #1f9d3a); }
+.hptext {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 900; color: #fff; text-shadow: 0 1px 2px #000;
+}
+.side-stat { text-align: center; min-width: 64px; }
+.turn-banner {
+  background: #ffd94d; color: #231600; font-size: 15px; font-weight: 900;
+  letter-spacing: 1px; padding: 8px 14px; border-radius: 8px; white-space: nowrap;
+}
+.turn-banner.enemy { background: #ff7a5c; color: #2a0d08; }
+
+.hand { display: flex; justify-content: center; gap: 10px; flex: none; }
+.opp-hand { height: 74px; align-items: center; padding-top: 4px; }
+.opp-hand .card { width: 52px; height: 68px; }
+.player-hand { height: 148px; align-items: flex-end; padding-bottom: 2px; }
+.player-hand .card { cursor: pointer; }
+
+#table {
+  flex: 1; display: flex; align-items: center; gap: 16px; padding: 4px 6px;
+}
+.played-slot {
+  width: 92px; height: 128px; flex: none; border: 3px dashed rgba(255,217,77,.55);
+  border-radius: 10px; position: relative;
+}
+.slot-label {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 900; letter-spacing: 1px; color: rgba(255,217,77,.75); text-align: center;
+}
+.played-slot .card { width: 86px; height: 122px; }
+.played-slot .card .rank { font-size: 36px; top: 16px; }
+.played-slot .card .suit { top: 56px; font-size: 22px; }
+.played-slot .card .cname { font-size: 10px; bottom: 18px; }
+.played-slot .card .ctext { font-size: 9px; }
+.log {
+  flex: 1; text-align: center; font-size: 19px; font-weight: 700; color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,.8); line-height: 1.35;
+}
+.score-box {
+  text-align: center; background: rgba(0,0,0,.38); border: 2px solid rgba(201,162,39,.7);
+  border-radius: 10px; padding: 10px 16px;
+}
+#endBtn {
+  background: #ffd94d; color: #231600; border: 3px solid #fff3b0;
+  font-size: 19px; font-weight: 900; padding: 9px 20px; border-radius: 10px;
+  box-shadow: 0 4px 0 #7a4d00;
+}
+#endBtn:disabled { opacity: .45; cursor: default; }
+
+/* ---------- win / loss overlay ---------- */
+#endOverlay {
+  position: absolute; inset: 0; z-index: 5; text-align: center;
+  background: rgba(4, 18, 9, .94); padding-top: 58px;
+}
+#endOverlay.win .end-title { color: #ffd94d; }
+#endOverlay.loss .end-title { color: #ff7a5c; }
+.end-title { font-size: 92px; font-weight: 900; letter-spacing: 8px; text-shadow: 0 6px 24px rgba(0,0,0,.8); }
+.end-sub { font-size: 23px; font-weight: 700; color: #fff; margin-top: 6px; }
+.end-stats { font-size: 19px; color: #d8c98a; margin-top: 18px; line-height: 1.6; }
+#againBtn {
+  margin-top: 22px; background: #ffd94d; color: #231600; border: 3px solid #fff3b0;
+  font-size: 22px; font-weight: 900; letter-spacing: 2px; padding: 12px 30px; border-radius: 12px;
+  box-shadow: 0 6px 0 #7a4d00;
+}
